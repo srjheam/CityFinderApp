@@ -1,6 +1,6 @@
 <p float="left" align="middle">
-  <img src="https://github.com/srjheam/CityFinderApp/raw/main/img/cityfinder-screenshot.png" width="50%" hspace="16" />
-  <img src="https://github.com/srjheam/CityFinderApp/raw/main/img/cityfinder-demo.gif" width="50%" hspace="16" /> 
+  <img src="https://github.com/srjheam/CityFinderApp/raw/main/img/cityfinder-screenshot.png" width="45%" hspace="16" />
+  <img src="https://github.com/srjheam/CityFinderApp/raw/main/img/cityfinder-demo.gif" width="45%" hspace="16" /> 
 </p>
 
 ## Known Limitations
