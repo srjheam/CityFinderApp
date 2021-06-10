@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityFinder.Android", "CityFinder\CityFinder.Android\CityFinder.Android.csproj", "{6A386F9C-6C05-454B-963F-A77456A0CEB2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CityFinder", "CityFinder\CityFinder\CityFinder.csproj", "{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CityFinder.Tests", "CityFinder.Tests\CityFinder.Tests.csproj", "{284C49FA-5653-44AB-BC52-BD1CA162DC78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A386F9C-6C05-454B-963F-A77456A0CEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A386F9C-6C05-454B-963F-A77456A0CEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A386F9C-6C05-454B-963F-A77456A0CEB2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A386F9C-6C05-454B-963F-A77456A0CEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A386F9C-6C05-454B-963F-A77456A0CEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A386F9C-6C05-454B-963F-A77456A0CEB2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F9C95E5-8219-44E1-99A8-4A6F39B69F68}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{284C49FA-5653-44AB-BC52-BD1CA162DC78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284C49FA-5653-44AB-BC52-BD1CA162DC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284C49FA-5653-44AB-BC52-BD1CA162DC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284C49FA-5653-44AB-BC52-BD1CA162DC78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C04860E1-7E1B-497E-B33C-2A6CDC2856E0}
+	EndGlobalSection
+EndGlobal
