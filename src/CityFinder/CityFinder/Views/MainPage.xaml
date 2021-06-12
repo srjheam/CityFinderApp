@@ -12,63 +12,61 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout Grid.Row="0">
-            <Frame BackgroundColor="#2196F3" Padding="16" CornerRadius="0">
-                <Label Text="City Finder" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
-            </Frame>
-            <Frame Padding="0" Margin="8" BackgroundColor="White" HasShadow="False" BorderColor="Gray" CornerRadius="8" HeightRequest="40">
-                <SearchBar Placeholder="US 10001" Text="{Binding SearchQuery}" BackgroundColor="Transparent" />
-            </Frame>
-        </StackLayout>
-        <Label Text="Enter zip code" IsVisible="{Binding IsQueryEmpty}" 
-               Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" />
-        <Label Text="Enter a valid zip code" IsVisible="{Binding IsQueryInvalid}" 
-               Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" />
-        <ActivityIndicator IsVisible="{Binding ZipCodeInfo.IsNotCompleted}" IsRunning="{Binding ZipCodeInfo.IsNotCompleted}"
-                           Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" />
-        <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
-               Grid.Row="1" IsVisible="{Binding DoesZipCodeExist}">
-            <ListView ItemsSource="{Binding ZipCodeInfo.Result.Places}" HasUnevenRows="True" SelectionMode="None"
+    <RelativeLayout>
+        <Frame x:Name="BottomSheet" HasShadow="True" CornerRadius="8" Padding="1,4,1,0" BackgroundColor="#faf9f8"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.9,Constant=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=0}">
+            <Frame.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </Frame.GestureRecognizers>
+            <StackLayout Spacing="5">
+                <BoxView HeightRequest="5" CornerRadius="2" WidthRequest="50" BackgroundColor="Gray" HorizontalOptions="Center"/>
+                <Frame Padding="0" Margin="8" BackgroundColor="White" HasShadow="False" BorderColor="Gray" CornerRadius="8" HeightRequest="40">
+                    <SearchBar x:Name="SearchBar" Placeholder="US 10001" Text="{Binding SearchQuery}" BackgroundColor="Transparent"
+                               Focused="SearchBar_Focused" />
+                </Frame>
+                <ActivityIndicator IsVisible="{Binding ZipCodeInfo.IsNotCompleted}" IsRunning="{Binding ZipCodeInfo.IsNotCompleted}"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
+                       IsVisible="{Binding DoesZipCodeExist}">
+                    <ListView ItemsSource="{Binding ZipCodeInfo.Result.Places}" HasUnevenRows="True" SelectionMode="None"
                       IsVisible="{Binding ZipCodeInfo.IsSuccessfullyCompleted}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Place">
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical" >
-                                <Label Margin="4,2,4,0">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding PlaceName}"
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Place">
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" >
+                                        <Label Margin="4,2,4,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding PlaceName}"
                                                   FontAttributes="Bold" FontSize="Medium" />
-                                            <Span Text=", "
+                                                    <Span Text=", "
                                                   FontSize="Medium" />
-                                            <Span Text="{Binding StateAbbreviation}"
+                                                    <Span Text="{Binding StateAbbreviation}"
                                                   FontSize="Medium" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label Margin="4,0,4,2">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Latitude}"
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Margin="4,0,4,2">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Latitude}"
                                                   FontSize="Body" />
-                                            <Span Text=", "
+                                                    <Span Text=", "
                                                   FontSize="Body" />
-                                            <Span Text="{Binding Longitude}"
+                                                    <Span Text="{Binding Longitude}"
                                                   FontSize="Body" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </StackLayout>
         </Frame>
-    </Grid>
-
+    </RelativeLayout>
 </ContentPage>
