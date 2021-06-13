@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:helpers="clr-namespace:CityFinder.Helpers"
              xmlns:local="clr-namespace:CityFinder.ViewModels"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:models="clr-namespace:CityFinder.Models"
              x:Class="CityFinder.MainPage"
              x:DataType="local:MainPageViewModel">
@@ -13,6 +14,8 @@
     </ContentPage.Resources>
 
     <RelativeLayout>
+        <maps:Map RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.91}" />
         <Frame x:Name="BottomSheet" HasShadow="True" CornerRadius="8" Padding="1,4,1,0" BackgroundColor="#faf9f8"
                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.9,Constant=0}"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}"
@@ -31,7 +34,7 @@
                 <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
                        IsVisible="{Binding DoesZipCodeExist}">
                     <ListView ItemsSource="{Binding ZipCodeInfo.Result.Places}" HasUnevenRows="True" SelectionMode="None"
-                      IsVisible="{Binding ZipCodeInfo.IsSuccessfullyCompleted}">
+                              IsVisible="{Binding ZipCodeInfo.IsSuccessfullyCompleted}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:Place">
                                 <ViewCell>
@@ -40,11 +43,11 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding PlaceName}"
-                                                  FontAttributes="Bold" FontSize="Medium" />
+                                                          FontAttributes="Bold" FontSize="Medium" />
                                                     <Span Text=", "
-                                                  FontSize="Medium" />
+                                                          FontSize="Medium" />
                                                     <Span Text="{Binding StateAbbreviation}"
-                                                  FontSize="Medium" />
+                                                          FontSize="Medium" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -52,11 +55,11 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding Latitude}"
-                                                  FontSize="Body" />
+                                                          FontSize="Body" />
                                                     <Span Text=", "
-                                                  FontSize="Body" />
+                                                          FontSize="Body" />
                                                     <Span Text="{Binding Longitude}"
-                                                  FontSize="Body" />
+                                                          FontSize="Body" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
