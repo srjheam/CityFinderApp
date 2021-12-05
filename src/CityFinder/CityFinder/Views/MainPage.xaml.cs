@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CityFinder.Models;
 using CityFinder.ViewModels;
+using System;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace CityFinder
 {
@@ -93,5 +95,24 @@ namespace CityFinder
             var finalTranslation = Math.Max(Math.Min(0, -1000), -Math.Abs(GetProportionCoordinate(.85)));
             BottomSheet.TranslateTo(BottomSheet.X, finalTranslation, 150, Easing.SpringIn);
         }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var en = PlacesListView.ItemsSource.GetEnumerator();
+            en.MoveNext();
+            MoveMapToZip(en.Current as Place);
+        }
+
+        private void PlacesListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            MoveMapToZip(e.Item as Place);
+        }
+
+        private void MoveMapToZip(Place place)
+        {
+            var pos = new Position(place.Latitude, place.Longitude);
+            Map.MoveToRegion(new MapSpan(pos, 10e-2, 10e-2));
+        }
+
     }
 }

@@ -14,7 +14,8 @@
     </ContentPage.Resources>
 
     <RelativeLayout>
-        <maps:Map RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+        <maps:Map x:Name="Map"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.91}" />
         <Frame x:Name="BottomSheet" HasShadow="True" CornerRadius="8" Padding="1,4,1,0" BackgroundColor="#faf9f8"
                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.9,Constant=0}"
@@ -30,7 +31,7 @@
                     <SearchBar x:Name="SearchBar" Placeholder="US 10001" Text="{Binding SearchQuery}" BackgroundColor="Transparent"
                                Focused="SearchBar_Focused" />
                 </Frame>
-                <ActivityIndicator IsVisible="{Binding ZipCodeInfo.IsNotCompleted}" IsRunning="True"
+                <ActivityIndicator IsVisible="{Binding ZipCodeInfo.IsNotCompleted}" IsRunning="{Binding ZipCodeInfo.IsNotCompleted}"
                                    HorizontalOptions="Center" VerticalOptions="Center" />
                 <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
                        IsVisible="{Binding IsQueryEmpty}">
@@ -38,8 +39,10 @@
                 </Frame>
                 <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
                        IsVisible="{Binding DoesZipCodeExist}">
-                    <ListView ItemsSource="{Binding ZipCodeInfo.Result.Places}" HasUnevenRows="True" SelectionMode="None"
-                              IsVisible="{Binding ZipCodeInfo.IsSuccessfullyCompleted}">
+                    <ListView x:Name="PlacesListView"
+                              ItemsSource="{Binding ZipCodeInfo.Result.Places}" HasUnevenRows="True" SelectionMode="None"
+                              IsVisible="{Binding ZipCodeInfo.IsSuccessfullyCompleted}"
+                              ItemAppearing="ListView_ItemAppearing" ItemTapped="PlacesListView_ItemTapped">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:Place">
                                 <ViewCell>
