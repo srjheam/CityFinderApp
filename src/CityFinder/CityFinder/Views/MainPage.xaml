@@ -24,13 +24,18 @@
                 <PanGestureRecognizer PanUpdated="OnPanUpdated" />
             </Frame.GestureRecognizers>
             <StackLayout Spacing="5">
-                <BoxView HeightRequest="5" CornerRadius="2" WidthRequest="50" BackgroundColor="Gray" HorizontalOptions="Center"/>
+                <BoxView HeightRequest="5" CornerRadius="2" WidthRequest="50" BackgroundColor="Gray" HorizontalOptions="Center"
+                         Margin="0,4,0,-2"/>
                 <Frame Padding="0" Margin="8" BackgroundColor="White" HasShadow="False" BorderColor="Gray" CornerRadius="8" HeightRequest="40">
                     <SearchBar x:Name="SearchBar" Placeholder="US 10001" Text="{Binding SearchQuery}" BackgroundColor="Transparent"
                                Focused="SearchBar_Focused" />
                 </Frame>
-                <ActivityIndicator IsVisible="{Binding ZipCodeInfo.IsNotCompleted}" IsRunning="{Binding ZipCodeInfo.IsNotCompleted}"
+                <ActivityIndicator IsVisible="{Binding ZipCodeInfo.IsNotCompleted}" IsRunning="True"
                                    HorizontalOptions="Center" VerticalOptions="Center" />
+                <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
+                       IsVisible="{Binding IsQueryEmpty}">
+                    <Label HorizontalOptions="CenterAndExpand">Start typing some zip code.</Label>
+                </Frame>
                 <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
                        IsVisible="{Binding DoesZipCodeExist}">
                     <ListView ItemsSource="{Binding ZipCodeInfo.Result.Places}" HasUnevenRows="True" SelectionMode="None"
@@ -68,6 +73,10 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                </Frame>
+                <Frame BackgroundColor="Transparent" Margin="8,0,8,0" Padding="0"
+                       IsVisible="{Binding IsQueryInvalid}">
+                    <Label HorizontalOptions="CenterAndExpand">Looks like this zip code doesn't exist.</Label>
                 </Frame>
             </StackLayout>
         </Frame>

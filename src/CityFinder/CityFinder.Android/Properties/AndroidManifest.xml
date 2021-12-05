@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.1" package="com.srjheam.cityfinder" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
 	<application android:label="City Finder" android:theme="@style/MainTheme">
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDhQBDOEWa5CC6atT_sAfVev55fDqMxs9g" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="API_KEY_HERE" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <uses-library android:name="org.apache.http.legacy" android:required="false" />
   </application>
